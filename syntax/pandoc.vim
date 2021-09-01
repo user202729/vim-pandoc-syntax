@@ -503,7 +503,7 @@ endif
 syn match pandocListItemBullet /^(\?.\{-}[.)]/ contained containedin=pandocListItem
 syn match pandocListItemBulletId /\(\d\+\|\l\|\#\|@.\{-}\|x\=l\=\(i\{,3}[vx]\=\)\{,3}c\{,3}\)/ contained containedin=pandocListItemBullet
 
-syn match pandocListItemContinuation /^\s\+\([-+*]\s\+\|(\?.\+[).]\)\@<!\([[:upper:][:lower:]_"[]\|\*\S\)\@=.*$/ nextgroup=pandocLaTeXMathBlock,pandocLaTeXInlineMath,pandocEscapedDollar,pandocDelimitedCodeBlock,pandocListItemContinuation,pandocListItem contains=@Spell,pandocEmphasis,pandocStrong,pandocNoFormatted,pandocStrikeout,pandocSubscript,pandocSuperscript,pandocStrongEmphasis,pandocStrongEmphasis,pandocPCite,pandocICite,pandocCiteKey,pandocReferenceLabel,pandocReferenceURL,pandocLaTeXCommand,pandocLaTeXMathBlock,pandocLaTeXInlineMath,pandocEscapedDollar,pandocAutomaticLink,pandocFootnoteDef,pandocFootnoteBlock,pandocFootnoteID,pandocAmpersandEscape contained skipempty display
+syn match pandocListItemContinuation /^\s\+\([-+*]\s\+\|(\?.\+[).]\)\@<!\([[:upper:][:lower:]%^$_"[]\|\*\S\)\@=.*$/ nextgroup=pandocLaTeXMathBlock,pandocLaTeXInlineMath,pandocEscapedDollar,pandocDelimitedCodeBlock,pandocListItemContinuation,pandocListItem contains=@Spell,pandocEmphasis,pandocStrong,pandocNoFormatted,pandocStrikeout,pandocSubscript,pandocSuperscript,pandocStrongEmphasis,pandocStrongEmphasis,pandocPCite,pandocICite,pandocCiteKey,pandocReferenceLabel,pandocReferenceURL,pandocLaTeXCommand,pandocLaTeXMathBlock,pandocLaTeXInlineMath,pandocEscapedDollar,pandocAutomaticLink,pandocFootnoteDef,pandocFootnoteBlock,pandocFootnoteID,pandocAmpersandEscape contained skipempty display
 " }}}2
 
 " Definitions: {{{2
