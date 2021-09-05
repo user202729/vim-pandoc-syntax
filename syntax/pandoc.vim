@@ -166,18 +166,16 @@ function! EnableEmbedsforCodeblocksWithLang(entry)
     endif
 
     try
-        "let s:langname = matchstr(a:entry, '^[^=]*')
-        let s:langname = substitute(a:entry, '=[^=]*$', '', '')
+        let s:langname = matchstr(a:entry, '^[^=]*')
         let s:langsyntaxfile = matchstr(a:entry, '[^=]*$')
         unlet! b:current_syntax
-		let s:escapedlangname=substitute(s:langname, "[^A-Za-z]", {x->printf("_%x_", char2nr(x[0], 1))}, "g")
-        exe 'syn include @'.toupper(s:escapedlangname).' syntax/'.s:langsyntaxfile.'.vim'
-        exe 'syn region pandocDelimitedCodeBlock_' . s:escapedlangname . ' start=/\(\_^\([ ]\{4,}\|\t\)\=\(`\{3,}`*\|\~\{3,}\~*\)\s*\%({[^.]*\.\)\=' . s:langname . '\(\>.*\)\?\n\)\@<=\_^/' .
+        exe 'syn include @'.toupper(s:langname).' syntax/'.s:langsyntaxfile.'.vim'
+        exe 'syn region pandocDelimitedCodeBlock_' . s:langname . ' start=/\(\_^\([ ]\{4,}\|\t\)\=\(`\{3,}`*\|\~\{3,}\~*\)\s*\%({[^.]*\.\)\=' . s:langname . '\>.*\n\)\@<=\_^/' .
                     \' end=/\_$\n\(\([ ]\{4,}\|\t\)\=\(`\{3,}`*\|\~\{3,}\~*\)\_$\n\_$\)\@=/ contained containedin=pandocDelimitedCodeBlock' .
-                    \' contains=@' . toupper(s:escapedlangname)
-        exe 'syn region pandocDelimitedCodeBlockinBlockQuote_' . s:escapedlangname . ' start=/>\s\(`\{3,}`*\|\~\{3,}\~*\)\s*\%({[^.]*\.\)\=' . s:langname . '\(\>\|\$\)/' .
+                    \' contains=@' . toupper(s:langname)
+        exe 'syn region pandocDelimitedCodeBlockinBlockQuote_' . s:langname . ' start=/>\s\(`\{3,}`*\|\~\{3,}\~*\)\s*\%({[^.]*\.\)\=' . s:langname . '\>/' .
                     \ ' end=/\(`\{3,}`*\|\~\{3,}\~*\)/ contained containedin=pandocDelimitedCodeBlock' .
-                    \' contains=@' . toupper(s:escapedlangname) .
+                    \' contains=@' . toupper(s:langname) .
                     \',pandocDelimitedCodeBlockStart,pandocDelimitedCodeBlockEnd,pandodDelimitedCodeblockLang,pandocBlockQuoteinDelimitedCodeBlock'
     catch /E484/
       echo "No syntax file found for '" . s:langsyntaxfile . "'"
